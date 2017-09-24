@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Waterloo Works Fixes",
+    "version": "0.1",
+    "permissions": [
+        "tabs",
+        "https://waterlooworks.uwaterloo.ca/*"
+    ],
+    "content_scripts": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "js": ["jquery.min.js", "content.js"]
+      }
+    ]
+}
