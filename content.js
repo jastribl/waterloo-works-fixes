@@ -16,7 +16,7 @@ var highlightJobStatus = function () {
 
     appStatues.filter(function() {
         const internalStatus = $(this).parent().find("td:nth-child(8)").text();
-        const interviewsDone = internalStatus.includes("Interview Selections Complete") || internalStatus.includes("Interview Complete");
+        const interviewsDone = internalStatus.includes("Interview Selections Complete") || internalStatus.includes("Interview Complete") || internalStatus.includes("Emp Rankings Finalized");
         const cancelledJob = internalStatus.includes("Cancel");
         return cancelledJob || $(this).text().includes("Not Selected") || ($(this).text().includes("Applied") && interviewsDone);
     }).parent().find("td").css("background-color", RED_CSS);
