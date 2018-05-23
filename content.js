@@ -8,6 +8,7 @@ var highlightTimeout = null;
 var highlightJobStatus = function () {
     const RED_CSS = "rgba(255, 0, 0, 0.4)";
     const GREEN_CSS = "rgba(0, 255, 0, 0.4)";
+    const YELLOW_CSS = "rgba(255, 255, 0, 0.4)";
     var appStatues = $("#postingsTableDiv td:nth-child(2)");
 
     appStatues.filter(function() {
@@ -20,6 +21,10 @@ var highlightJobStatus = function () {
         const cancelledJob = internalStatus.includes("Cancel");
         return cancelledJob || $(this).text().includes("Not Selected") || ($(this).text().includes("Applied") && interviewsDone);
     }).parent().find("td").css("background-color", RED_CSS);
+
+    appStatues.filter(function() {
+        return $(this).text().includes("Applied");
+    }).parent().find("td").css("background-color", YELLOW_CSS);
 };
 
 $(document).on('click', 'a', function() {
