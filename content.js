@@ -12,6 +12,10 @@ var highlightJobStatus = function () {
     var appStatues = $("#postingsTableDiv td:nth-child(2)");
 
     appStatues.filter(function() {
+        return $(this).text().includes("Applied");
+    }).parent().find("td").css("background-color", YELLOW_CSS);
+
+    appStatues.filter(function() {
         return $(this).text().includes("Selected for Interview");
     }).parent().find("td").css("background-color", GREEN_CSS);
 
@@ -21,10 +25,6 @@ var highlightJobStatus = function () {
         const cancelledJob = internalStatus.includes("Cancel");
         return cancelledJob || $(this).text().includes("Not Selected") || ($(this).text().includes("Applied") && interviewsDone);
     }).parent().find("td").css("background-color", RED_CSS);
-
-    appStatues.filter(function() {
-        return $(this).text().includes("Applied");
-    }).parent().find("td").css("background-color", YELLOW_CSS);
 };
 
 $(document).on('click', 'a', function() {
